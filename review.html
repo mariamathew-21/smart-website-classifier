@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Submit Clothing Review</h2>
+
+<form method="POST">
+  <label>Review Title:</label><br>
+  <input type="text" name="review_title"><br><br>
+
+  <label>Clothing ID:</label><br>
+  <input type="text" name="clothing_id"><br><br>
+
+  <label>Check this if you are adding a new clothing ID</label><br>
+  <input type="checkbox" name="new_id"><br><br>
+
+  <label>Clothing Name:</label><br>
+  <input type="text" name="clothing_name"><br><br>
+
+  <label>Clothing Description:</label><br>
+  <input type="text" name="clothing_desc"><br><br>
+
+  <label>Clothing Category (Choose from Tops, Bottoms, Dresses, Jackets, Intimates, Trend):</label><br>
+  <input type="text" name="clothing_cat"><br><br>
+
+  <label>Review Description:</label><br>
+  <textarea name="review_text" rows="5" cols="60"></textarea><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+{% if predicted_category is not none %}
+  <hr>
+  <h4>🔍 Recommended Category:</h4>
+  <p><strong>{{ predicted_category }}</strong></p>
+{% endif %}
+
+{% if success %}
+  <p style="color: green;"><strong>Your review has been saved.</strong></p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Clothing Store</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="navbar">    
+<li><a href="{{ url_for('index') }}">All Clothing</a></li>
+<li><a href="{{ url_for('category_page', category='tops') }}">Tops</a></li>
+<li><a href="{{ url_for('category_page', category='bottoms') }}">Bottoms</a></li>
+<li><a href="{{ url_for('category_page', category='dresses') }}">Dresses</a></li>
+<li><a href="{{ url_for('category_page', category='jackets') }}">Jackets</a></li>
+<li><a href="{{ url_for('category_page', category='intimates') }}">Intimates</a></li>
+<li><a href="{{ url_for('category_page', category='trend') }}">Trend</a></li>
+<li><a href="{{ url_for('review') }}">Review</a></li>
+
+        <li style="margin-left: auto;">
+          <form action="/search" method="GET" style="display: flex;">
+            <input type="text" name="query" placeholder="Search..." class="search-box">
+            <button type="submit">🔍</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+    <h1>🛍️ My Clothing Store</h1>
+    <hr>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

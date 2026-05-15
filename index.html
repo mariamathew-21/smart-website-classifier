@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if query %}
+  <h2>{{ count }} item(s) matched your search for "{{ query }}"</h2>
+{% elif category %}
+  <h2>{{ category }} Collection</h2>
+{% else %}
+  <h2>Available Clothing Items</h2>
+{% endif %}
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+  {% for item in items %}
+    <div style="border: 1px solid #ccc; padding: 15px; width: 300px; border-radius: 8px;">
+      <h4>{{ item['Title'] }}</h4>
+      <p><strong>ID:</strong> {{ item['Clothing ID'] }}</p>
+      <p><strong>Name:</strong> {{ item['Clothes Title'] }}</p>
+      <a href="/item/{{ item['Clothing ID'] }}">View Details</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% if not show_all %}
+  <div style="margin-top: 30px;">
+    {% if category %}
+  <a href="{{ url_for('category_page', category=category.lower(), show='all') }}">View All Items</a>
+{% endif %}
+
+  </div>
+{% endif %}
+
+{% endblock %}

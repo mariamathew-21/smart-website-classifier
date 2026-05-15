@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>{{ item['Clothes Title'] }}</h2>
+<p><strong>Item ID:</strong> {{ item['Clothing ID'] }}</p>
+<p><strong>Description:</strong> {{ item['Clothes Description'] }}</p>
+<p><strong>Rating:</strong> {{ item['Rating'] }}</p>
+
+<hr>
+<h3>Reviews</h3>
+
+{% if reviews %}
+    {% for review in reviews %}
+        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px; border-radius:8px;">
+            <strong>{{ review["Review Title"] }}</strong><br>
+            <em>{{ review["Review Text"] }}</em><br>
+                    </div>
+    {% endfor %}
+{% else %}
+    <p>No reviews yet for this item.</p>
+{% endif %}
+
+<p><a href="/">⬅️ Back to Home</a></p>
+{% endblock %}
